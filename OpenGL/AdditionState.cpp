@@ -2,7 +2,11 @@
 
 void AdditionState::handleKeyBoardSpecialKeyCommand(int key, GLint px, GLint py)
 {
+	if (key == GLUT_KEY_INSERT)
+		parentGraphicObject = graphicWorld->getNextObject();
 	
+	if (key == GLUT_KEY_HOME)
+		parentGraphicObject = nullptr;
 }
 
 void AdditionState::handleKeyBoardCommand(unsigned char key, int x, int y)
@@ -27,10 +31,14 @@ void AdditionState::handleMouseClickCommand(int button,int state, int x, int y)
 	switch(button)
 	{
 	case GLUT_LEFT_BUTTON:
+
 		if (graphicObject == nullptr)
 		{
 			graphicObject = new GraphicObject(currentPrimitive);
-			graphicWorld->addGraphicObject(graphicObject);
+			if (parentGraphicObject != nullptr)
+				parentGraphicObject->addChild(graphicObject);
+			else
+				graphicWorld->addGraphicObject(graphicObject);
 		}
 
 		graphicObject->addPoint(new Point4D(x, y));
