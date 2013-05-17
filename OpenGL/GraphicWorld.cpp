@@ -18,9 +18,26 @@ void GraphicWorld::zoomOut()
 	minimumY--;
 }
 
+GraphicObject* GraphicWorld::getNextObject()
+{
+	GraphicObject* object = (*iterator);
+	object->setSelected(false);
+
+	iterator++;
+
+	if (iterator == graphicObjects.end())
+		iterator = graphicObjects.begin();
+
+	object = (*iterator);
+	object->setSelected(true);
+
+	return object;
+}
+
 void GraphicWorld::addGraphicObject(GraphicObject* graphicObject)
 {
 	graphicObjects.push_back(graphicObject);
+	iterator = graphicObjects.begin();
 }
 
 void GraphicWorld::setOrtho2d()
