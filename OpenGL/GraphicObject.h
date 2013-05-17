@@ -21,6 +21,7 @@ private:
 	BoundingBox* boundingBox;
 	Color color;
 	Transform matrix;
+	bool isSelected;
 
 	void updateBoundingBox();
 	double calculatePointsDistance(Point4D* point, Point4D* other);
@@ -30,13 +31,12 @@ private:
 public:
 	void removeLastSimulatedPoint();
 	void simulateNewPoint(float x, float y);
-
-	void addChild(GraphicObject* child);
 	void addPoint(Point4D* point);
+	void addChild(GraphicObject* child);
 	void removePoint(Point4D* point);
 	void draw();
 	void update();
-
+	void setSelected(bool selected);
 	void setMatrix(Transform matrix);
 
 	Point4D getBoundingBoxCenter();
@@ -53,10 +53,14 @@ public:
 		this->primitive = primitive;
 		this->boundingBox = new BoundingBox();
 		this->matrix.MakeIdentity();
+		this->isSelected = false;
 	}
 
 	~GraphicObject()
 	{
+		for (auto it = children.begin(); it != children.end(); it++)
+			delete *it;
+
 		for(auto it = points.begin(); it != points.end(); it++)
 			delete *it;
 
