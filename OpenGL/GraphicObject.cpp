@@ -17,10 +17,16 @@ Point4D GraphicObject::getBoundingBoxCenter()
 	return boundingBox->getCenter();
 }
 
+void GraphicObject::setSelected(bool selected)
+{
+	this->isSelected = selected;
+}
+
 void GraphicObject::draw()
 {
 	Point4D* point;
 	glColor3f(color.getRed(), color.getGreen(), color.getBlue());
+	glLineWidth(isSelected ? 2 : 1);
 
 	glPushMatrix();
     glMultMatrixd(matrix.GetData());
@@ -151,7 +157,7 @@ void GraphicObject::removePoint(Point4D* point)
 			break;
 		}
 	}
-	
+
 	updateBoundingBox();
 }
 
