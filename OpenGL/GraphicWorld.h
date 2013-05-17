@@ -11,6 +11,7 @@ private:
 	float maximumY;
 
 	vector<GraphicObject*> graphicObjects;
+	vector<GraphicObject*>::iterator iterator;
 
 public:
 	GraphicWorld()
@@ -42,4 +43,6 @@ public:
 	void drawSRU();
 	void draw();
 	void setOrtho2d();
+
+	GraphicObject* getNextObject();
 };
