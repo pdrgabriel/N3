@@ -2,6 +2,7 @@
 
 #include "GraphicObject.h"
 
+/** Represents the graphical space.*/
 class GraphicWorld
 {
 private:
@@ -31,18 +32,21 @@ public:
 		graphicObjects.clear();
 	}
 
+	/** Given a Point4D, returns the GraphicObject selected, i.e, the GraphicObject which the point is inside.
+	Returns nullptr if no GraphichObject was selected*/
 	GraphicObject* selectedGraphicObject(Point4D point);
 
+	void deselectAllGraphicObjects();
 	void addGraphicObject(GraphicObject* graphicObject);
 	void zoomIn();
 	void zoomOut();
 
-	void panLeft();
-	void panRight();
-
 	void drawSRU();
 	void draw();
+
 	void setOrtho2d();
 
+	/** Returns, in sequence of inclusion, the GraphicObjects contained in the graphical space.
+	This method only iterates through the parent GraphicObjects, children GraphicObjects are not included.*/
 	GraphicObject* getNextObject();
 };

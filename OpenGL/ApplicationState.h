@@ -1,7 +1,7 @@
 #include "GraphicWorld.h"
 
 #pragma once;
-
+/** Abstract class that represents the state of the application. See AdditionState and EditionState.*/
 class ApplicationState
 {
 protected:

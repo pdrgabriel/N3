@@ -18,17 +18,25 @@ void GraphicWorld::zoomOut()
 	minimumY--;
 }
 
+void GraphicWorld::deselectAllGraphicObjects()
+{
+	for (auto it = graphicObjects.begin(); it != graphicObjects.end(); it++)
+		(*it)->setSelected(false);
+}
+
 GraphicObject* GraphicWorld::getNextObject()
 {
-	GraphicObject* object = (*iterator);
-	object->setSelected(false);
+	if (graphicObjects.size() == 0)
+		return nullptr;
 
+	deselectAllGraphicObjects();
+	
 	iterator++;
 
 	if (iterator == graphicObjects.end())
 		iterator = graphicObjects.begin();
 
-	object = (*iterator);
+	GraphicObject* object = (*iterator);
 	object->setSelected(true);
 
 	return object;
@@ -53,6 +61,8 @@ void GraphicWorld::draw()
 
 GraphicObject* GraphicWorld::selectedGraphicObject(Point4D point)
 {
+	deselectAllGraphicObjects();
+
 	GraphicObject* selectedGraphicObject;
 
 	for (auto it = graphicObjects.begin(); it != graphicObjects.end(); it++)
@@ -60,7 +70,10 @@ GraphicObject* GraphicWorld::selectedGraphicObject(Point4D point)
 		selectedGraphicObject = (*it);
 
 		if (selectedGraphicObject->pointIsInside(point))
+		{
+			selectedGraphicObject->setSelected(true);
 			return selectedGraphicObject;
+		}
 	}
 
 	return nullptr;

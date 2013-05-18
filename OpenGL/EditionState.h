@@ -1,12 +1,15 @@
 #include "ApplicationState.h"
 #include "Transformer.h"
+#include "ColorSelector.h"
 
+/** Represents the state of edition. This state provides handlers for input events during the edition of existing GraphicObjects*/
 class EditionState : public ApplicationState
 {
 private:
 	GraphicObject* graphicObject;
 	Point4D* pointToEdit;
 	Transformer transformer;
+	ColorSelector colorSelector;
 
 public:
 

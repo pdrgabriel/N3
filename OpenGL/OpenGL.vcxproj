@@ -67,10 +67,11 @@
   <ItemGroup>
     <ClCompile Include="AdditionState.cpp" />
     <ClCompile Include="BoundingBox.cpp" />
+    <ClCompile Include="ColorSelector.cpp" />
     <ClCompile Include="EditionState.cpp" />
     <ClCompile Include="GraphicObject.cpp" />
     <ClCompile Include="GraphicWorld.cpp" />
-    <ClCompile Include="N201.cpp" />
+    <ClCompile Include="Main.cpp" />
     <ClCompile Include="point4d.cpp" />
     <ClCompile Include="transform.cpp" />
     <ClCompile Include="Transformer.cpp" />
@@ -80,6 +81,7 @@
     <ClInclude Include="ApplicationState.h" />
     <ClInclude Include="BoundingBox.h" />
     <ClInclude Include="Color.h" />
+    <ClInclude Include="ColorSelector.h" />
     <ClInclude Include="EditionState.h" />
     <ClInclude Include="GraphicObject.h" />
     <ClInclude Include="GraphicWorld.h" />

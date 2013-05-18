@@ -9,7 +9,6 @@
 #include <GL/glut.h>
 #include <math.h>
 
-
 AdditionState* additionState;
 EditionState* editionState;
 

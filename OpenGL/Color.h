@@ -1,5 +1,6 @@
 #pragma once;
 
+/** This class represents colors using the RGB notation. Some predefined colors are presented through static methods.*/
 class Color{
 private:
 	unsigned char rgb[3];

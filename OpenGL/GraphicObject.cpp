@@ -25,7 +25,7 @@ void GraphicObject::setSelected(bool selected)
 void GraphicObject::draw()
 {
 	Point4D* point;
-	glColor3f(color.getRed(), color.getGreen(), color.getBlue());
+	glColor3b(color.getRed(), color.getGreen(), color.getBlue());
 	glLineWidth(isSelected ? 2 : 1);
 
 	glPushMatrix();
@@ -40,7 +40,9 @@ void GraphicObject::draw()
 	}
 
 	glEnd();
-	boundingBox->draw();
+
+	if (isSelected)
+		boundingBox->draw();
 
 	for(auto it = children.begin(); it != children.end(); it++)
 		(*it)->draw();

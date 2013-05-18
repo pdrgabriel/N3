@@ -2,11 +2,17 @@
 
 void AdditionState::handleKeyBoardSpecialKeyCommand(int key, GLint px, GLint py)
 {
-	if (key == GLUT_KEY_INSERT)
+	switch(key)
+	{
+	case GLUT_KEY_INSERT:
 		parentGraphicObject = graphicWorld->getNextObject();
-	
-	if (key == GLUT_KEY_HOME)
+		break;
+
+	case GLUT_KEY_HOME:
+		graphicWorld->deselectAllGraphicObjects();
 		parentGraphicObject = nullptr;
+		break;
+	}
 }
 
 void AdditionState::handleKeyBoardCommand(unsigned char key, int x, int y)

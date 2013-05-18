@@ -1,5 +1,6 @@
 #include "GraphicObject.h"
 
+/**Encapsulates the algorithms for transformations applicable to GraphicObjects.*/
 class Transformer
 {
 private:
@@ -24,13 +25,25 @@ public:
 		scaleFactor = 2;
 	}
 
+	/**Returns a Transform matrix that contains all transformations made to the GraphichObject, plus the left translation*/
 	Transform makeTranslationLeft(GraphicObject* graphicObject);
+	
+	/**Returns a Transform matrix that contains all transformations made to the GraphichObject, plus the right translation*/
 	Transform makeTranslationRight(GraphicObject* graphicObject);
+
+	/**Returns a Transform matrix that contains all transformations made to the GraphichObject, plus the up translation*/
 	Transform makeTranslationUp(GraphicObject* graphicObject);
+
+	/**Returns a Transform matrix that contains all transformations made to the GraphichObject, plus the down translation*/
 	Transform makeTranslationDown(GraphicObject* graphicObject);
 
+
+	/**Returns a Transform matrix that contains all transformations made to the GraphichObject, plus the scale up operation*/
 	Transform makeScaleUp(GraphicObject* graphicObject);
+
+	/**Returns a Transform matrix that contains all transformations made to the GraphichObject, plus the scale down operation*/
 	Transform makeScaleDown(GraphicObject* graphicObject);
 
+	/**Returns a Transform matrix that contains all transformations made to the GraphichObject, plus the rotation.*/
 	Transform makeRotation(GraphicObject* graphicObject);
 };

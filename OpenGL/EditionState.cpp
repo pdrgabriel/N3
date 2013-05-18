@@ -2,10 +2,15 @@
 
 void EditionState::handleKeyBoardSpecialKeyCommand(int key, GLint px, GLint py)
 {
-	Transform resultMatrix;
+	Transform resultMatrix = graphicObject->getMatrix();
 
 	switch(key)
 	{
+	case GLUT_KEY_HOME:
+		graphicWorld->deselectAllGraphicObjects();
+		graphicObject = nullptr;
+		return;
+
 	case GLUT_KEY_LEFT:
 		resultMatrix = transformer.makeTranslationLeft(graphicObject);
 		break;
@@ -33,6 +38,10 @@ void EditionState::handleKeyBoardSpecialKeyCommand(int key, GLint px, GLint py)
 	case GLUT_KEY_F11:
 		resultMatrix = transformer.makeRotation(graphicObject);
 		break;
+
+	default:
+		break;
+
 	}
 
 	graphicObject->setMatrix(resultMatrix);
@@ -44,7 +53,7 @@ void EditionState::handleKeyBoardCommand(unsigned char key, int x, int y)
 	{
 	case 'C':
 		if (graphicObject != nullptr)
-			graphicObject->setColor(Color::GREEN());
+			graphicObject->setColor(colorSelector.getRandomColor());
 		break;
 
 	case 'D':
