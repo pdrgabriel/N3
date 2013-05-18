@@ -2,6 +2,9 @@
 
 void EditionState::handleKeyBoardSpecialKeyCommand(int key, GLint px, GLint py)
 {
+	if (graphicObject == nullptr)
+		return;
+
 	Transform resultMatrix = graphicObject->getMatrix();
 
 	switch(key)
